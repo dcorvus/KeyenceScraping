@@ -1,11 +1,8 @@
-## Keyence Web Dashboard Information Scrape
+## Keyence Webscrape Project
 This project allows you to access various Keyence Printer Dashboards and scrapes essential information such as the Ink Level, Solvent Level, Printer Name, etc.
 
-### Running the Application
-In order to run the app, make sure you are in the project directory then run the following command in your terminal.
-```
-uvicorn printer_api:app --app-dir . --host 0.0.0.0 --port 5055
-```
+
+## Intructions
 
 ### Installing Requirements
 Make sure you are in your appropriate working directory, and run the following command in your terminal.
@@ -13,7 +10,7 @@ Make sure you are in your appropriate working directory, and run the following c
 pip install -r requirements.txt
 ```
 
-### Important Values to Change
+### Values to Change
 In the `printer_api.py` file, you need to change values in order for this to run for you.
 
 ```py
@@ -46,4 +43,48 @@ WEB_TARGETS = [
         "password": "PASSWORD2",
     }
 ]
+```
+
+### Running the Application
+In order to run the app, make sure you are in the project directory then run the following command in your terminal.
+```
+uvicorn printer_api:app --app-dir . --host 0.0.0.0 --port 5055
+```
+
+
+### Created Endpoints
+Access it via whatever you are serving the data as far as the URL. By default you can use `http://127.0.0.1` if you have not routed a domain name to it.
+```
+/api/health
+/api/printer-data
+/api/printer-data/refresh
+/api/printer-data.js
+```
+
+
+## Examples
+See examples of how you would render the data.
+
+### Website Fetch
+```
+async function loadPrinterData() {
+    const response = await fetch("http://127.0.0.1/api/printer-data");
+    const payload = await response.json();
+
+    console.log("Last Scraped:", payload.ScrapedAt);
+    console.log("Printer Count:", payload.Count);
+    console.table(payload.Data);
+
+    return payload.Data;
+}
+
+loadPrinterData();
+```
+
+### Script Include Style Page
+```
+<script src="http://127.0.0.1/api/printer-data.js"></script>
+<script>
+    console.table(printerData);
+</script>
 ```
