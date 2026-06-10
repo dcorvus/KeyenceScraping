@@ -24,9 +24,10 @@ WEB_TARGETS = [
 ```
 
 Change the value of `url` to be the URL you use to access the main page for your Keyence Printers. Include `home.html` and any other information appended to the URL. The page should look similar to the following image.
+
 ![](https://i.imgur.com/BwjMJcq.png)
 
-`username` and `password` should be changed to whatever you use to access that specific webpage.
+The values `username` and `password` should be changed to whatever you use to access that specific webpage.
 
 You can also incorporate multiple web dashboards using this script, simply add additional blocks like the following:
 ```py
@@ -66,7 +67,7 @@ Access it via whatever you are serving the data as far as the URL. By default yo
 See examples of how you would render the data.
 
 ### Website Fetch
-```
+```python
 async function loadPrinterData() {
     const response = await fetch("http://127.0.0.1/api/printer-data");
     const payload = await response.json();
@@ -82,7 +83,7 @@ loadPrinterData();
 ```
 
 ### Script Include Style Page
-```
+```html
 <script src="http://127.0.0.1/api/printer-data.js"></script>
 <script>
     console.table(printerData);
