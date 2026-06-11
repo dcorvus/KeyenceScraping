@@ -12,20 +12,10 @@ from playwright.sync_api import sync_playwright, TimeoutError as PlaywrightTimeo
 
 WEB_TARGETS = [
     {
-        "url": "http://192.168.141.88/html/home.html?lang=en&version=02.03.04",
-        "username": "user",
-        "password": "10399",
-    },
-    {
-        "url": "http://192.168.140.89/html/home.html?lang=en&version=02.08.02",
-        "username": "user",
-        "password": "10399",
-    },
-    {
-        "url": "http://192.168.142.207/html/home.html?lang=en&version=02.06.01",
-        "username": "user",
-        "password": "10399",
-    },
+        "url": "http://127.0.0.1/html/home.html",
+        "username": "USERNAME",
+        "password": "PASSWORD",
+    }
 ]
 
 
